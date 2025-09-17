@@ -14,6 +14,24 @@ export class AppointmentSlotController {
     }
   
 
+@Post('/save')
+public async saveAppointment(@Body() request:any){
+    const appointment = getManager().getRepository(AppointmentSlot)  
+    const result:any = await appointment.save(request) 
+    return {status:200, message:'success', data:result}
+
+}
+
+
+@Post('/update')
+public async updateAppointment(@Body() request:any){
+    const appointment = getManager().getRepository(AppointmentSlot)  
+    const result:any = await appointment.update(request.id, request) 
+    return {status:200, message:'success', data:result}
+
+}
+
+
     @Post('/appointment-list')
     public async appointmentList(@Body() request:any): Promise<any> {
         let resposnse:any={}
