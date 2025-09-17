@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Template</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet"> 
+	<style type="text/css">
+		body { font-family: 'Roboto', sans-serif; background: #f5f5f5;  }
+	</style>
+</head>
+<body>
+<div width="100%" style="margin:0px 0 0 0;background:#f5f5f5">
+    <center style="width:100%;text-align:left;background:#f5f5f5;padding-bottom: 25px;"> 	
+    	
+
+
+ 
+        <table style="margin:0 auto;background:#f5f5f5;padding-top:0px;border-bottom: solid;" class="m_-5907332182002236281m_-1691394256282030723email-container" width="580" cellspacing="0" cellpadding="0" border="0" align="center">        
+		  
+			   
+				<tbody>
+
+					<tr>
+						<td>
+							<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center" style="padding: 5px 0;background: #0276a0;">
+								<tbody><tr>
+									<td dir="ltr" style="text-align:center;" valign="top">
+									 <img style="width: 60px;" src="<%= mailLogo %>">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						</td>
+					</tr>
+
+					<tr>
+							<td dir="ltr" width="100%" valign="top" align="center" style="padding: 0px;"  style="background: #fff;">
+								<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center" style="background: #fff;">
+							<tbody>  
+									
+
+					<tr>
+					<td dir="ltr" width="100%" valign="top" align="center" style="padding: 0px;"  style="background: #fff;">
+						<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center" style="background: #fff;">
+							<tbody>  <tr>
+                                
+									<td class="m_-5907332182002236281m_-1691394256282030723stack-column-center" width="100%" style=" padding: 15px; ">
+										<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+											<tbody>
+											<tr>
+												<% if(productDetailData){ %>
+												<td dir="ltr" style="padding:0 0px;color:#000;font-weight:400;text-align:left;font-size:14px;line-height:1.5rem;padding-top:10px;font-family: 'Roboto', sans-serif;text-transform: capitalize;" valign="top">
+													<% }  else { %>
+												<td dir="ltr" style="padding:0 0px;color:#000;font-weight:400;text-align:left;font-size:14px;line-height:1.5rem;padding-top:10px;font-family: 'Roboto', sans-serif;" valign="top">
+												<% } %>	
+								<%- emailContent %>
+								<% if(productDetailData){ %>
+									<tr>
+										<td class="m_-5907332182002236281m_-1691394256282030723stack-column-center" width="100%" style=" padding: 0 10px; ">
+											<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center" style="border-bottom: solid 2px #333;">
+												<tbody>
+												<tr>
+													<td dir="ltr" style="padding:0 0px;color:#000;font-weight:400;text-align:left;font-size:14px;line-height:1.5rem;font-family: 'Roboto', sans-serif;" valign="top"> Order Id: <%= orderData.orderPrefixId %>
+													</td>
+													<td dir="ltr" style="padding:0 0px;color:#000;font-weight:400;text-align:right;font-size:14px;line-height:1.5rem;font-family:'Roboto',sans-serif;" valign="top"> Order Date :
+														 <%= today%>
+													</td>
+												</tr>								
+												</tbody>
+											</table>
+										</td>
+									</tr>
+		
+									<tr>
+										<td class="m_-5907332182002236281m_-1691394256282030723stack-column-center" width="100%" style=" padding: 0 10px; ">
+											<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+												<tbody>
+												<tr>
+													<td dir="ltr" width="60%" valign="top"> 
+														<h3 style="padding:10px 0px 0;color:#000;font-weight:400;text-align:left;font-size:14px;line-height:1.5rem;font-family: 'Roboto', sans-serif;">Customer Information</h3>
+														<p style="font-size: 14;margin: 0;color: #000;padding-bottom: 0px;text-transform: capitalize;"> <%= orderData.shippingFirstname %></p>
+														<a href="javascript:void(0)"  style="font-size: 14;margin: 0;color: #000;padding-bottom: 0px;display: block;color:#003ad8;"> <%= orderData.email %> </a>
+														<a href="javascript:void(0)"  style="font-size: 14;margin: 0;color: #000;padding-bottom: 0px;display: block;color:#000000;"> <%= orderData.telephone %> </a>
+													</td>
+													<td dir="ltr" style="padding: 0px 0px 0 0px;color:#000;text-align:left;font-weight:300; font-size:14px;line-height:1.5rem;font-family: 'Roboto', sans-serif;" valign="top"> 
+														<h3 style="padding:10px 0px 0	;color:#000;font-weight:400;text-align:left;font-size:14px;line-height:1.5rem;font-family: 'Roboto', sans-serif;">Delivery Address</h3> 
+														<p style="font-size: 14;margin: 0;color: #000;padding-bottom: 5px;font-weight: 400;text-transform: capitalize;"> <%= orderData.shippingFirstname %><br/><%= orderData.shippingAddress1 %>, <%= orderData.shippingAddress2 %>, <%= orderData.shippingCity %>, <%= orderData.shippingZone %>, <%= orderData.shippingPostcode %><br/><%= orderData.telephone %>  </p>
+													</td>
+												</tr>								
+												</tbody>
+											</table>
+										</td>
+									</tr>	
+								<tr>
+									<td class="m_-5907332182002236281m_-1691394256282030723stack-column-center" width="100%" style=" padding: 10px; ">
+										<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+											<tbody>
+												<tr>
+													<td dir="ltr" valign="top" style="font-size:14px;color:#000;border-top:solid thin #ddd;border-bottom:solid thin #ddd;padding:10px 10px;"> Products Name </td>
+													<td dir="ltr" valign="top" style="font-size:14px;color:#000;border-top:solid thin #ddd;border-bottom:solid thin #ddd;padding:10px 10px;text-align: center;"> Qty </td>
+													<td dir="ltr" valign="top" style="font-size:14px;color:#000;border-top:solid thin #ddd;border-bottom:solid thin #ddd;padding:10px 10px;text-align: right;"> GST %</td>
+													<td dir="ltr" valign="top" style="font-size:14px;color:#000;border-top:solid thin #ddd;border-bottom:solid thin #ddd;padding:10px 10px;text-align: right;"> Price </td>
+													<td dir="ltr" valign="top" style="font-size:14px;color:#000;border-top:solid thin #ddd;border-bottom:solid thin #ddd;padding:10px 10px;text-align: right;"> Total</td>
+												</tr>	
+												
+												<% 
+      var i = 1;
+      var quantity = 0;
+      var price = 0;
+      var tax = 0;
+      var total = 0;
+      var discountAmt = 0;
+      var couponDiscountAmt = 0;
+      var discountedAmt = 0;
+      var productTotalAmount = 0;
+      var orderAmount = 0;
+      productDetailData.forEach(function(product) { 
+          price += product.basePrice*product.quantity;
+          tax+= ((product.basePrice*product.taxValue)/100)*product.quantity;
+          total += product.total;
+          discountedAmt += (+product.discountAmount+(product.discountAmount*product.taxValue)/100)*product.quantity;
+    %>
+   
+    <tr>
+		<td dir="ltr" valign="top" style="font-size:14px;color:#000;border-bottom:solid thin #ddd;padding:15px 10px;text-align: left;"><%= product.name %> <%if (product.varientName) { %> (<%= product.varientName %>)<% } %></td>
+		<td dir="ltr" valign="top" style="font-size:14px;color:#000;border-bottom:solid thin #ddd;padding:15px 10px;text-align: center;"><%= product.quantity %></td>
+		<td dir="ltr" valign="top" style="font-size:14px;color:#000;border-bottom:solid thin #ddd;padding:15px 10px;text-align: right;"><%= Math.round(product.taxValue) %></td>
+		<td dir="ltr" valign="top" style="font-size:14px;color:#000;border-bottom:solid thin #ddd;padding:15px 10px;text-align: right;"><%= Math.round(product.discountAmount=='0.00'?product.basePrice:product.discountedAmount) %></td>
+		<td dir="ltr" valign="top" style="font-size:14px;color:#000;border-bottom:solid thin #ddd;padding:15px 10px;text-align: right;"><%= Math.round(product.total) %></td>
+      </tr>
+
+      <% 
+      i++;
+      }); 
+  %>
+												<tr>
+													<td dir="ltr" colspan="4" valign="top" style="font-size:13px;color:#000;border-bottom:solid 0px #ddd;padding:15px 10px;text-align: right;font-weight: 300;"> Gross Amount </td>
+													<td dir="ltr" valign="top" style="font-size:14px;color:#333;border-bottom:solid 0px #ddd;padding:15px 10px;text-align: right;"> <%= orderData.currencyLeft %>&nbsp;<%= orderData.totalItemsPrice - orderData.totalTax %> </td>
+												</tr>	
+												<tr>
+													<td dir="ltr" colspan="4" valign="top" style="font-size:13px;color:#000;border-bottom:solid 1px #ddd;padding:5px 10px;text-align: right;font-weight: 300;"> Total GST </td>
+													<td dir="ltr" valign="top" style="font-size:14px;color:#333;border-bottom:solid 1px #ddd;padding:5px 10px;text-align: right;"> <%= orderData.currencyLeft %>&nbsp;<%= orderData.totalTax %></td>
+												</tr>
+												<tr>
+													<td dir="ltr" colspan="4" valign="top" style="font-size:13px;color:#000;border-bottom:solid 1px #ddd;padding:5px 10px;text-align: right;font-weight: 300;"> Total </td>
+													<td dir="ltr" valign="top" style="font-size:14px;color:#333;border-bottom:solid 1px #ddd;padding:5px 10px;text-align: right;"> <%= orderData.currencyLeft %>&nbsp;<%= orderData.totalItemsPrice %></td>
+												</tr>	
+
+												<tr>
+													<td dir="ltr" colspan="4" valign="top" style="font-size:13px;color:#000;border-bottom:solid 1px #ddd;padding:5px 10px;text-align: right;font-weight: 300;"> Total Discount </td>
+													
+													<td dir="ltr" valign="top" style="font-size:14px;color:#333;border-bottom:solid 1px #ddd;padding:5px 10px;text-align: right;">-&nbsp;<%= orderData.currencyLeft %>&nbsp;<%= Math.round(orderData.discountAmount) %></td>
+												</tr>	
+												<tr>
+													<td dir="ltr" colspan="4" valign="top" style="font-size:13px;color:#000;border-bottom:solid 1px #ddd;padding:5px 10px;text-align: right;font-weight: 300;"> Shipping </td>
+													<td dir="ltr" valign="top" style="font-size:14px;color:#333;border-bottom:solid 1px #ddd;padding:5px 10px;text-align: right;"> <%= orderData.currencyLeft %>&nbsp;<%= orderData.shippingCharges %></td>
+												</tr>
+												<tr>
+													<td dir="ltr" colspan="4" valign="top" style="font-size:13px;color:#000;border-bottom:solid 1px #ddd;padding:15px 10px;text-align: right;font-weight: 400;"> Amount to be paid</td>
+													<td dir="ltr" valign="top" style="font-size:14px;color:#000;border-bottom:solid 1px #ddd;padding:15px 10px;text-align: right;"><%= orderData.currencyLeft %>&nbsp;<%= Math.round(orderData.total) %></td>
+												</tr>						
+											</tbody>
+										</table>
+									</td>
+								</tr>
+							<% } %>
+								
+						<table style="Margin:auto" cellspacing="0" cellpadding="0" border="0" align="center">
+                <tbody>
+					<br>
+					<br>
+                <tr>
+                  <td style="border-radius:3px;background:#2856b6;text-align:center" class="m_-2195465710535294947m_-2105386732584480426button-td">
+                    <a href="<%= storeRedirectUrl %>"  style="background:#0276a0;border:15px solid #0276a0;padding:0 10px;color:#ffffff;font-family:sans-serif;font-size:14px;line-height:1.5;text-align:center;text-decoration:none;display:block;border-radius:3px;font-weight:bold" class="m_-2195465710535294947m_-2105386732584480426button-a" rel="noopener" target="_blank" data-saferedirecturl="">
+                      KEEP BROWSING
+                    </a>
+                  </td>
+                </tr>
+                </tbody>
+							</table>							
+						<tr>
+             
+								<td class="m_-5907332182002236281m_-1691394256282030723stack-column-center" width="100%" style=" padding: 15px; ">
+									<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center">
+										<tbody>
+									
+										<tr>
+											<td dir="ltr" style="padding:0 0px;color:#000;font-weight:300;text-align:left;font-size:12px;line-height:1.2rem;padding-top:10px;font-family: 'Roboto', sans-serif;" valign="top"> 
+										</tr>									
+										</tbody>
+									</table>
+								</td>                                
+							</tr>
+
+              <tr>
+                                
+								<td class="m_-5907332182002236281m_-1691394256282030723stack-column-center" width="100%" style="padding: 20px 10px; ">
+									<table width="100%" cellspacing="0" cellpadding="0" border="0" align="center" style="">
+										<tbody>
+											<tr>
+												<td><p style="margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,'sans-serif';background:white">
+													<span style="font-size:10pt;font-family:'Segoe UI','sans-serif';margin:0px;color:rgb(36,36,36)">Best regards,&nbsp;</span></p>
+													<p style="margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,'sans-serif';background:white">
+													<b><span style="font-size:10pt;font-family:Arial,'sans-serif';margin:0px;color:rgb(192,0,0)">RED CHIEF&nbsp;</span></b></p>
+													<p style="margin:0cm 0cm 0.0001pt;font-size:11pt;font-family:Calibri,'sans-serif';background:white">
+													<b><span style="border:1pt none windowtext;font-size:8pt;font-family:Arial,'sans-serif';margin:0px;padding:0cm;color:rgb(31,73,125)">18001200141</span></b><strong><span style="font-weight:normal;font-size:8pt;font-family:'Segoe UI','sans-serif';margin:0px;color:rgb(36,36,36)">&nbsp;</span></strong></p></td>
+											</tr>
+									
+									</tbody></table>
+								</td>                               
+							</tr>                         
+                            
+						</tbody></table>
+					</td>
+				</tr>               
+		
+        </tbody></table>  
+
+    </center>
+    <div class="yj6qo"></div>
+    <div class="adL"></div>
+</div>
+</body>
+</html>
+
+
+

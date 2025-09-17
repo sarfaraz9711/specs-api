@@ -1,0 +1,28 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+#additional file
+*.env
+tslint.json
+.tmp
+# Dependency directories
+node_modules
+apidoc
+
+#transpiled Folder
+dist
+
+#doc file
+src/public/apidoc/*
+
+#upload folder
+uploads
+
+src/public/apidoc/*.js
+src/public/apidoc/*.json
+
+src/public/apidoc/api_data.js
+src/public/apidoc/api_data.json
+src/public/apidoc/api_project.js
+src/public/apidoc/api_project.json

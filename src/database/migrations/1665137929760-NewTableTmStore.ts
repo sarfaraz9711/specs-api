@@ -1,0 +1,326 @@
+import {MigrationInterface, QueryRunner, Table} from "typeorm";
+
+export class NewTableTmStore1665137929760 implements MigrationInterface {
+
+    public async up(queryRunner: QueryRunner): Promise<void> {
+		  const table = new Table({
+            name: 'tm_store',
+            columns: [
+                {
+                    name: 'id',
+                    type: 'int',
+                    length: '11',
+                    isPrimary: true,
+                    isNullable: false,
+                    isGenerated: true,
+                    generationStrategy: 'increment',
+                },{
+                    name: 'city_id',
+                    type: 'int',
+                    length: '11',
+                    isPrimary: false,
+                    isNullable: true,
+                },{
+                    name: 'pincode',
+                    type: 'text',
+                    length: '65535',
+                    isPrimary: false,
+                    isNullable: true,
+                },{
+                    name: 'latitude',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'longitude',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'shop_name',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'address',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'store_opening_time',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'store_closing_time',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'contact_no',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'quantity',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'ref_num',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'first_name',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'store_legal_name',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'shop_no',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'business_name',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'percentage_commision',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'staff_strength',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'annual_turnover',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'year_of_company_foundation',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'sales_experience',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'client_name',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'active',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'is_order_mail',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'email_id',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'shipper_name',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'store_type_vendor',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'store_type',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'address_2',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'store_country',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'store_state',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'store_city',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'mobile_no',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'is_store_shipper',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'is_warehouse',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'is_asp',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'is_web_online',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'is_store',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'is_deliver_store',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'is_order_store',
+                    type: 'varchar',
+                    length: '255',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+				{
+                    name: 'created_date',
+                    type: 'datetime',
+                    isPrimary: false,
+                    isNullable: true,
+                    default: 'CURRENT_TIMESTAMP',
+                }, {
+                    name: 'modified_date',
+                    type: 'datetime',
+                    isPrimary: false,
+                    isNullable: true,
+                    default: 'CURRENT_TIMESTAMP',
+                }, {
+                    name: 'created_by',
+                    type: 'int',
+                    length: '11',
+                    isPrimary: false,
+                    isNullable: true,
+                }, {
+                    name: 'modified_by',
+                    type: 'int',
+                    length: '11',
+                    isPrimary: false,
+                    isNullable: true,
+                },
+            ],
+        });
+        const ifExsist = await queryRunner.hasTable('tm_store');
+        if (!ifExsist) {
+            await queryRunner.createTable(table);
+        }
+    }
+
+    public async down(queryRunner: QueryRunner): Promise<void> {
+		await queryRunner.dropTable('tm_store', true);
+    }
+
+}
+

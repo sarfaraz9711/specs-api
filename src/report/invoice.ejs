@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<title>Invoice</title>
+
+</head>
+
+<body style="padding: 2em; font-family: Arial, sans-serif; zoom: 0.55">
+<table style="width: 100%;">
+<tbody>
+<tr>
+<td colspan="4" style="border-top: 2px solid #aaa; border-bottom: 2px solid #aaa; text-align: center; font-size: 20px; font-weight: bold;">Tax Invoice</td>
+</tr>
+<tr>
+</tbody>
+</table>
+<table border="2" cellpadding="5" cellspacing="0" style="width: 100%; font-size: 16px; margin-top: 10px">
+<colgroup>
+<col width="70%"/>
+<col width="15%"/>
+<col width="15%"/>
+</colgroup>
+<tbody>
+<tr>
+<td style="font-weight: bold;"><%= data.settingDetails.storeName %></td>
+<td style="font-weight: bold;">CIN No.</td>
+<td><%= data.settingDetails.cinNumber %></td>
+</tr>
+<tr>
+<td style="font-weight: bold;">(<%= data.settingDetails.storeOwner %>)</td>
+<td style="font-weight: bold;">GSTIN No</td>
+<td><%= data.settingDetails.gstinNumber %></td>
+</tr>
+<tr>
+<td style="font-weight: bold;"></td>
+<td style="font-weight: bold;">Invoice No.</td>
+<td><%= data.invoiceNo %></td>
+</tr>
+<tr>
+<td><%= data.settingDetails.storeAddress %></td>
+<td style="font-weight: bold;">Order No.</td>
+<td><%= data.orderPrefixId %></td>
+</tr>
+<tr>
+<td><%= data.settingDetails.registeredAddress %></td>
+<td style="font-weight: bold;">Order Date.</td>
+<td><%= data.createdDate %></td>
+</tr>
+<tr>
+<td>Phone No. : 0512-2551201</td>
+<td style="font-weight: bold;">Payment Mode</td>
+<td><%= data.paymentStatus==0?'COD':'ONLINE'%></td>
+</tr>
+</tbody>
+</table>
+<table style="width: 100%; margin-top: 10px">
+<tbody>
+<tr>
+<td colspan="4" style="border-top: 2px solid #aaa; border-bottom: 2px solid #aaa; text-align: center; font-size: 20px; font-weight: bold;">Customer Details</td>
+</tr>
+<tr>
+</tbody>
+</table>
+<table border="2" cellpadding="5" cellspacing="0" style="width: 100%; font-size: 16px; margin-top: 10px">
+  <colgroup>
+  <col width="25%"/>
+  <col width="25%"/>
+  <col width="25%"/>
+  <col width="25%"/>
+  </colgroup>
+  <tbody>
+  <tr>
+  <td style="font-weight: bold;" colspan="2" align="center">Billing Address</td>
+  <td style="font-weight: bold;" colspan="2" align="center">Shipping Address</td>
+  </tr>
+  <tr>
+  <td style="font-weight: bold;">Name</td>
+  <td><%= data.paymentFirstname + ' ' + data.paymentLastname %></td>
+  <td style="font-weight: bold;">Name</td>
+  <td><%= data.paymentFirstname + ' ' + data.paymentLastname %></td>
+  </tr>
+  <tr>
+  <td style="font-weight: bold;">Address</td>
+  <td><%= data.paymentAddress1 + ', ' + data.paymentAddress2+ ', ' +data.paymentCity + ', ' + data.paymentPostcode %></td>
+  <td style="font-weight: bold;">Address</td>
+  <td><%= data.paymentAddress1 + ', ' + data.paymentAddress2+ ', ' +data.paymentCity + ', ' + data.paymentPostcode %></td>
+  </tr>
+  <tr>
+  <td style="font-weight: bold;">Mobile</td>
+  <td><%= data.telephone %></td>
+  <td style="font-weight: bold;">Mobile</td>
+  <td><%= data.telephone %></td>
+  </tr>
+  <tr>
+  <td style="font-weight: bold;">Email</td>
+  <td><%= data.email %></td>
+  <td style="font-weight: bold;">Email</td>
+  <td><%= data.email %></td>
+  </tr>
+  </tbody>
+  </table>
+  <table style="width: 100%; margin-top: 10px">
+    <tbody>
+    <tr>
+    <td colspan="4" style="border-top: 2px solid #aaa; border-bottom: 2px solid #aaa; text-align: center; font-size: 20px; font-weight: bold;">Order Details</td>
+    </tr>
+    <tr>
+    </tbody>
+  <table border="2" cellpadding="5" cellspacing="0" style="width: 100%; font-size: 16px; margin-top: 10px">
+    <colgroup>
+    <col width="60%"/>
+    <col width="10%"/>
+    <col width="10%"/>
+    <col width="10%"/>
+    <col width="10%"/>
+    </colgroup>
+    <thead>
+    <tr>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>GST %</th>
+    <th>Price</th>
+    <th>MRP</th>
+    </tr>
+    <thead>
+    <tbody>
+     <% 
+      var i = 1;
+      var quantity = 0;
+      var price = 0;
+      var tax = 0;
+      var total = 0;
+      var discountAmt = 0;
+      var couponDiscountAmt = 0;
+      var discountedAmt = 0;
+      var productTotalAmount = 0;
+      var orderAmount = 0;
+      data.productList.forEach(function(product) { 
+          price += product.basePrice*product.quantity;
+          tax+= ((product.basePrice*product.taxValue)/100)*product.quantity;
+          total += product.total;
+          discountedAmt += (+product.discountAmount+(product.discountAmount*product.taxValue)/100)*product.quantity;
+    %>
+   
+    <tr>
+      <td><%= product.name %> <%if (product.varientName) { %> (<%= product.varientName %>)<% } %></td>
+      <td><%= product.quantity %></td>
+      <td align="right"><%= Math.round(product.taxValue) %></td>
+      <td align="right"><%= Math.round(product.discountedAmount=='0.00'?product.basePrice:product.discountedAmount) %></td>
+      <td align="right"><%= Math.round(+product.basePrice+((+product.basePrice*product.taxValue)/100)) %></td>
+      </tr>
+
+      <% 
+      i++;
+      }); 
+  %>
+    </tbody>
+    </table>
+<div style="float: right; width: 40%;">
+    <table border="2" cellpadding="5" cellspacing="0" style="width: 100%; font-size: 16px; margin-top: 10px">
+      <tbody>
+        <tr>
+          <td style="font-weight: bold;">Gross Amount</td>
+          <td align="right"><%= data.totalItemsPrice %></td>
+          </tr>
+          <tr>
+          <td style="font-weight: bold;">Total GST</td>
+          <td align="right"><%= data.totalTax %></td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Total Discount</td>
+          <td align="right"><%= Math.round(data.discountAmount) %></td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Shipping Charges</td>
+          <td align="right"><%= Math.round(data.shippingCharges) %></td>
+        </tr>
+        <tr>
+          <td style="font-weight: bold;">Amount to be paid</td>
+          <td style="font-weight: bold;" align="right"><%= Math.round(data.total) %></td>
+          </tr>
+          <% 
+          var a = ['','One ','Two ','Three ','Four ', 'Five ','Six ','Seven ','Eight ','Nine ','Ten ','Eleven ','Twelve ','Thirteen ','Fourteen ','Fifteen ','Sixteen ','Seventeen ','Eighteen ','Nineteen '];
+                  var b = ['', '', 'Twenty','Thirty','Forty','Fifty', 'Sixty','Seventy','Eighty','Ninety'];
+        
+                  function inWords (num) {
+                      if ((num = num.toString()).length > 9) return 'overflow';
+                      n = ('000000000' + num).substr(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+                      if (!n) return; var str = '';
+                      str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'Crore ' : '';
+                      str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'Lakh ' : '';
+                      str += (n[3] != 0) ? (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + 'Thousand ' : '';
+                      str += (n[4] != 0) ? (a[Number(n[4])] || b[n[4][0]] + ' ' + a[n[4][1]]) + 'Hundred ' : '';
+                      str += (n[5] != 0) ? ((str != '') ? 'And ' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) + 'Only ' : '';
+                      return str;
+                  }
+          
+          %>
+          <tr>
+            <td colspan="2"><%= inWords(  Math.round(data.total)) %> </td>
+          </tr>
+      </tbody>
+    </table>
+  </div>
+<div style="clear: both;"></div>
+<table border="2" cellpadding="5" cellspacing="0" style="width: 100%; font-size: 16px; margin-top: 100px">
+<tbody>
+  <tr>
+   <td>Customer Care: - 1800-120-0141 (Toll Free ), Call Timing- 10 AM to 7 PM.
+    <br/>Whats App :- 9794352555, Help desk- helpdesk.redchief.in
+  <br/>* For more information regarding claim and exchange policy kindly visit our website.*
+  <br/>Note: In Discounted Period Shipping charges will be Applicable.
+</td>
+  </tr>
+  <tr>
+    <td>Thank you ! visit again
+      <br/><span style="text-decoration: underline;">redchief.in</span>
+    </td>
+  </tr>
+</tbody>
+</table>
+</body>
+
+</html>

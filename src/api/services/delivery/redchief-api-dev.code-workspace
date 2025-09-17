@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../../.."
+		},
+		{
+			"path": "../../../../../redchief-store-dev"
+		},
+		{
+			"path": "../../../../../redchief_admin_dev"
+		}
+	],
+	"settings": {}
+}

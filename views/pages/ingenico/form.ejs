@@ -1,0 +1,75 @@
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <h1 class="h3 mb-2 text-gray-800"x>Ingenico Details</h1>
+  <p class="mb-4">Configure your Ingenico details</p>
+
+  <!-- DataTales Example -->
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Ingenico Settings</h6>
+    </div>
+    <div class="card-body">
+        <form class="user" role="form" action="ingenico" method="POST">
+            <% if (messages.errors) { 0
+            %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <% 
+                    messages.errors.forEach(function(error) {
+                %>
+                <div> <%= error.msg ? error.msg : error  %> </div>
+                <%
+                    }); 
+                %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                </div>
+            <% 
+                }
+            %>
+            <div class="form-group" small>
+                <label class="control-label" for="mId">Merchant Code</label>
+                <input type="text" id="merchantCode" class="form-control form-control-user" value="<%= merchantCode %>" name="merchantCode" placeholder="merchantCode">
+            </div>
+            <div class="form-group" small>
+                <label class="control-label" for="clientId">Scheme Code</label>
+                <input type="text" id="schemeCode" class="form-control form-control-user" value="<%= schemeCode %>" name="schemeCode" placeholder="schemeCode">
+            </div>
+            <div class="form-group" small>
+                <label class="control-label" for="clientSecret">Encryption Key(Salt)</label>
+                <input type="text" id="encrypKey" class="form-control form-control-user" value="<%= encrypKey%>" name="encrypKey" placeholder="encrypKey">
+            </div>
+            <div class="form-group" small>
+                <label class="control-label" for="clientSecret">Incryption IV</label>
+                <input type="text" id="encrypIv" class="form-control form-control-user" value="<%= encrypIv %>" name="encrypIv" placeholder="encrypIv">
+            </div>
+            <div class="form-group" small>
+                <label class="control-label" for="clientSecret">User Id</label>
+                <input type="text" id="userId" class="form-control form-control-user" value="<%= userId %>" name="userId" placeholder="userId">
+            </div>
+            <div class="form-group" small>
+                <label class="control-label" for="clientSecret">Password</label>
+                <input type="text" id="password" class="form-control form-control-user" value="<%= password %>" name="password" placeholder="password">
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox small">
+                    <input type="checkbox" value="1" name="isTest" class="custom-control-input" id="customCheck" <%= isTest ? 'checked' : '' %> />
+                    <label class="custom-control-label" for="customCheck">Is Testing(Key for testing)</label>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-user btn-sm">
+                Save
+            </button>
+            <button onclick="location.href = 'home';" type="button" class="btn btn-info btn-user btn-sm" >
+                Cancel
+            </button>
+        </form>
+    </div>
+  </div>
+
+</div>
+<!-- /.container-fluid -->
