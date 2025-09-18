@@ -37,7 +37,9 @@ public async updateAppointment(@Body() request:any){
 @Get('/get-appointment-list')
 public async getAppointmentList(): Promise<any> {
     const appointment = getManager().getRepository(AppointmentSlot)
-    const result:any = await appointment.findOne()
+    const result = await appointment.findOne({
+        order: { id: 'DESC' }
+      });
     return {status:200, message:'success', data:result}
 }
     @Post('/appointment-list')
