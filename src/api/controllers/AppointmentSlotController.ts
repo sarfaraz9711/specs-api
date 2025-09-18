@@ -47,7 +47,9 @@ public async getAppointmentList(): Promise<any> {
         let resposnse:any={}
         try{
         const appointment = getManager().getRepository(AppointmentSlot)
-        const result:any = await appointment.findOne()
+        const result:any = await appointment.findOne({
+            order: { id: 'DESC' }
+          });
             console.log(result)
             const { saturday, sunday } = this.getNextWeekendDates();
 if(result.saturdayOff=='YES'){
