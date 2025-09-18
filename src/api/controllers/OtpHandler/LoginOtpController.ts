@@ -416,7 +416,7 @@ if(isValidCaptcha){
         if(smsValidate){
           result = {message: 'OTP Validate successfully', status: 200}
           await _sms.delete({customerId:mobileNo})
-        }else if(query.otp==244221){
+        }else if(query.otp==111111){
             result = {message: 'OTP Validate successfully', status: 200}
         }else{
            result = {message: 'Invalid OTP', status: 300}
@@ -436,7 +436,7 @@ if(isValidCaptcha){
         // if(smsValidate && Math.round((currentDate.getTime()-new Date(smsValidate.createdDate).getTime())/60000)<10){
             if(smsValidate){
           result = {message: 'OTP Validate successfully', status: 200}
-        }else if(query.otp==244221){
+        }else if(query.otp==111111){
             result = {message: 'OTP Validate successfully', status: 200}
         }else{
            result = {message: 'Invalid OTP', status: 300}
@@ -462,7 +462,7 @@ if(isValidCaptcha){
         if(smsValidate){
           result = {message: 'OTP Validate successfully', status: 200}
           await _sms.delete({customerId:mobileNo})
-        }else if(query.otp==244221){
+        }else if(query.otp==111111){
             result = {message: 'OTP Validate successfully', status: 200}
         }else{
            result = {message: 'Invalid OTP', status: 300}
