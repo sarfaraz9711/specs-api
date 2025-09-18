@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import {
     Body,
+    Get,
     JsonController,
     Post,
 
@@ -32,6 +33,13 @@ public async updateAppointment(@Body() request:any){
 }
 
 
+
+@Get('/get-appointment-list')
+public async getAppointmentList(): Promise<any> {
+    const appointment = getManager().getRepository(AppointmentSlot)
+    const result:any = await appointment.findOne()
+    return {status:200, message:'success', data:result}
+}
     @Post('/appointment-list')
     public async appointmentList(@Body() request:any): Promise<any> {
         let resposnse:any={}
