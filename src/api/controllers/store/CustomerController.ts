@@ -118,6 +118,8 @@ export class CustomerController {
         newUser.username = registerParam.emailId;
         newUser.mobileNumber = registerParam.phoneNumber;
         newUser.isActive = 1;
+        newUser.customerType = registerParam.customerType;
+        
         if(registerParam.password=='MigUserRedchief@2023'){
         newUser.migUserActive = 0;
         newUser.customerType=9

@@ -44,6 +44,9 @@ export class AppointmentBooked extends BaseModel{
     
     @Column({ name: 'is_active' })
     public isActive: string;
+    
+    @Column({ name: 'agent_id' })
+    public agentId: string;
 
     @BeforeInsert()
     public async createDetails(): Promise<void> {

@@ -41,4 +41,7 @@ export class CustomerRegisterRequest {
 
     @IsOptional()
     public phoneNumber: string;
+
+    @IsOptional()
+    public customerType: number;
 }
