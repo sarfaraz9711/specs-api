@@ -47,6 +47,24 @@ export class AppointmentBooked extends BaseModel{
     
     @Column({ name: 'agent_id' })
     public agentId: string;
+    
+    @Column({ name: 'order_id' })
+    public orderId: string;
+    
+    @Column({ name: 'eye_pressure' })
+    public eyePressure: string;
+    
+    @Column({ name: 'lens_type' })
+    public lensType: string;
+    
+    @Column({ name: 'vision_left' })
+    public visionLeft: string;
+    
+    @Column({ name: 'vision_right' })
+    public visionRight: string;
+    
+    @Column({ name: 'agent_remarks' })
+    public agentRemarks: string;
 
     @BeforeInsert()
     public async createDetails(): Promise<void> {
