@@ -223,7 +223,7 @@ export class CustomerController {
      */
     @Get('/customerlist')
     @Authorized(['admin', 'list-customer'])
-    public async customerList(@QueryParam('limit') limit: number, @QueryParam('offset') offset: number, @QueryParam('name') name: string, @QueryParam('status') status: string, @QueryParam('email') email: string, @QueryParam('customerGroup') customerGroup: string, @QueryParam('date') date: string, @QueryParam('count') count: number | boolean, @Res() response: any): Promise<any> {
+    public async customerList(@QueryParam('limit') limit: number, @QueryParam('offset') offset: number, @QueryParam('name') name: string, @QueryParam('status') status: string, @QueryParam('email') email: string, @QueryParam('customerGroup') customerGroup: string, @QueryParam('customerType') customerType: string, @QueryParam('date') date: string, @QueryParam('count') count: number | boolean, @Res() response: any): Promise<any> {
 
 
         let _name = name.split(" ");
@@ -263,6 +263,15 @@ export class CustomerController {
                 value: status,
             },
         ];
+
+if(customerType){
+    search.push(
+    {
+        name: 'customerType',
+        op: 'where',
+        value: customerType,
+    })
+}
 
         if(_lastName){
             search.push({
