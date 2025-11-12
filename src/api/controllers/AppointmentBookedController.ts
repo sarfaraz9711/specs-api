@@ -1,7 +1,6 @@
 import 'reflect-metadata';
 import {
     Body,
-    Get,
     JsonController,
     Post,
     Req,
@@ -135,14 +134,17 @@ export class AppointmentSlotController {
     }
 
     @UseBefore(CheckCustomerMiddleware)
-    @Get('/get-agent-list')
-    public async getAllAppointments(@Req() request: any): Promise<any> {
+    @Post('/get-agent-list')
+    public async getAllAppointments(@Req() request: any, @Body() body: { appointmentDate?: string }): Promise<any> {
         const userId = request.user.id; 
         const appointmentRepo = getManager().getRepository(AppointmentBooked);
         let result = await appointmentRepo
                 .createQueryBuilder('appointment')
             .where('appointment.agentId = :agentId', { agentId: userId })
+            .andWhere("appointment.appointmentDate = :date", { date: body.appointmentDate })
             .getMany();
+
+        console.log("daatta", body.appointmentDate, userId)
         return {
             status: 200,
             message: 'success',
