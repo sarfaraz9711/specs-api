@@ -4,11 +4,13 @@ import {
     Get,
     JsonController,
     Post,
-    QueryParam,
+    Req,
+    UseBefore,
 
 } from 'routing-controllers';
 import { getManager } from 'typeorm';
 import { AppointmentBooked } from '../models/AppointmentBookedModel';
+import { CheckCustomerMiddleware } from '../middlewares/checkTokenMiddleware';
 @JsonController('/book-appointment')
 export class AppointmentSlotController {
     constructor() {
@@ -132,20 +134,15 @@ export class AppointmentSlotController {
         return resposnse
     }
 
-    @Get('/list')
-    public async getAllAppointments(@QueryParam('agentId') agentId?: number): Promise<any> {
+    @UseBefore(CheckCustomerMiddleware)
+    @Get('/get-agent-list')
+    public async getAllAppointments(@Req() request: any): Promise<any> {
+        const userId = request.user.id; 
         const appointmentRepo = getManager().getRepository(AppointmentBooked);
-        let result;
-        if (agentId) {
-            result = await appointmentRepo
+        let result = await appointmentRepo
                 .createQueryBuilder('appointment')
-                .where('appointment.agentId = :agentId', { agentId })
-                .getMany();
-        } else {
-            result = await appointmentRepo.find();
-        }
-
-        console.log(result, "resulttttttttttttttt");
+            .where('appointment.agentId = :agentId', { agentId: userId })
+            .getMany();
         return {
             status: 200,
             message: 'success',
