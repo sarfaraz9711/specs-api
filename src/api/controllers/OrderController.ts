@@ -4061,18 +4061,24 @@ public async getProductSkuStatus(@QueryParams() data:any){
     @Post('/orders-by-customerid')
     public async customerOrdersList(@Body() request: any): Promise<any> {
         const orders = getManager().getRepository(Order);
+        let resposnse: any = {}
+        try {
         let result = await orders
             .createQueryBuilder('orders')
             .where('orders.customerId = :customerId', { customerId: request.customerId })
             .andWhere("orders.orderStatus = :orderStatus", { orderStatus: request.orderStatusId })
-            .getMany();
+            .orderBy("orders.createdDate", "DESC")
+            .getOne();
 
-        console.log("daatta", request.orderStatus, result)
-        return {
-            status: 200,
-            message: 'success',
-            data: result
-        };
-
+            console.log("daatta", request.customerId)
+            if (result) {
+                resposnse = { status: 200, message: 'success', data: result }
+            } else {
+                resposnse = { status: 300, message: 'No data found', data: null }
+            }
+        } catch {
+            resposnse = { status: 500, message: 'Error', data: null }
+        }
+        return resposnse
     }
 }
