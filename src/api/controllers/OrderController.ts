@@ -4056,5 +4056,23 @@ public async getProductSkuStatus(@QueryParams() data:any){
         return {status:300}
     }
 
-}
+    }
+
+    @Post('/orders-by-customerid')
+    public async customerOrdersList(@Body() request: any): Promise<any> {
+        const orders = getManager().getRepository(Order);
+        let result = await orders
+            .createQueryBuilder('orders')
+            .where('orders.customerId = :customerId', { customerId: request.customerId })
+            .andWhere("orders.orderStatus = :orderStatus", { orderStatus: request.orderStatusId })
+            .getMany();
+
+        console.log("daatta", request.orderStatus, result)
+        return {
+            status: 200,
+            message: 'success',
+            data: result
+        };
+
+    }
 }
