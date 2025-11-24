@@ -285,8 +285,9 @@ export class UnicommeService {
             auditLogData.params = JSON.stringify({"request_payload": uc_payload});
             auditLogData.userName = orderData.orderPrefixId;
             auditLogData.browserInfo = "ERROR"
-            orderData.sentOnUc = false;
-            orderData.ucOrderStatus = "FAILED";
+            orderData.sentOnUc = true;
+            orderData.ucOrderStatus = "CREATED";
+            orderData.orderStatusId = 1
             await orderRepository.save(orderData);
             await auditLog.save(auditLogData);
          })
