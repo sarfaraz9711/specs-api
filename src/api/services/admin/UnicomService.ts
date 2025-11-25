@@ -289,6 +289,13 @@ export class UnicommeService {
             orderData.ucOrderStatus = "CREATED";
             orderData.orderStatusId = 1
             await orderRepository.save(orderData);
+            const orderProductRepo = getManager().getRepository(OrderProduct);
+            const products = await orderProductRepo.find({ where: { orderId: orderData.orderId } });
+            for (const p of products) {
+               p.orderStatusId = 1;
+               await orderProductRepo.save(p);
+            }
+
             await auditLog.save(auditLogData);
          })
       } catch (error) {
